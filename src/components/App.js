@@ -11,19 +11,16 @@ const App = () => {
   ]);
 
   const handleComplete = (id) => {
-    const updatedTodos = todos.map(todo => {
-      if (todo.id === id) {
-        return { ...todo, completed: true };
-      }
-      return todo;
-    });
-    setTodos(updatedTodos);
+  setTodos(prevTodos => 
+      prevTodos.map(todo => 
+        todo.id === id ? { ...todo, completed: true } : todo
+      )
+    );
   };
 
   return (
-    <div id="main">
-      <h1>Todo List Manager</h1>
-      <TodoList todos={todos} onComplete={handleComplete} />
+   <div id="main">
+      <TodoList todos={todos} handleComplete={handleComplete} />
     </div>
   );
 };
