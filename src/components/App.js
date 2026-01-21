@@ -10,17 +10,17 @@ const App = () => {
     { id: 3, text: "Master State Management", completed: false }
   ]);
 
-  const handleComplete = (id) => {
-  setTodos(prevTodos => 
+ const handleComplete = (id) => {
+    setTodos(prevTodos => 
       prevTodos.map(todo => 
         todo.id === id ? { ...todo, completed: true } : todo
       )
     );
-  };
+  };;
 
   return (
    <div id="main">
-      <TodoList todos={todos} handleComplete={handleComplete} />
+     <TodoList todos={todos} handleComplete={handleComplete} />
     </div>
   );
 };
