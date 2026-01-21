@@ -1,13 +1,32 @@
-
-import React from "react";
+import React, { useState } from "react";
 import './../styles/App.css';
+import TodoList from './TodoList';
 
 const App = () => {
-  return (
-    <div>
-        {/* Do not remove the main div */}
-    </div>
-  )
-}
 
-export default App
+  const [todos, setTodos] = useState([
+    { id: 1, text: "Learn React", completed: false },
+    { id: 2, text: "Build a Todo App", completed: false },
+    { id: 3, text: "Master State Management", completed: false }
+  ]);
+
+  const handleComplete = (id) => {
+    const updatedTodos = todos.map(todo => {
+      if (todo.id === id) {
+        return { ...todo, completed: true };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
+
+  return (
+    <div id="main">
+      <h1>Todo List Manager</h1>
+      {/* Passing state and handler as props */}
+      <TodoList todos={todos} onComplete={handleComplete} />
+    </div>
+  );
+};
+
+export default App;
