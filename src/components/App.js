@@ -23,7 +23,6 @@ const App = () => {
   return (
     <div id="main">
       <h1>Todo List Manager</h1>
-      {/* Passing state and handler as props */}
       <TodoList todos={todos} onComplete={handleComplete} />
     </div>
   );
